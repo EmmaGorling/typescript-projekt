@@ -1,12 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent {
-
+  
 }
