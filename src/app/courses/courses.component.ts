@@ -63,7 +63,8 @@ export class CoursesComponent {
     if(this.searchInput.trim() !== '') {
       // Make input and possible searches lowercase and look for match
       this.courseList = this.courseList.filter( course => 
-        course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
+        course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || 
+        course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
     } else {
       this.courseList = this.orgCourseList;
     }
@@ -97,7 +98,5 @@ export class CoursesComponent {
   pointsDescending() {
     this.courseList = this.courseList.sort(function(a, b){return b.points - a.points});
   }
-
-  
 }
 
