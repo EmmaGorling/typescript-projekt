@@ -3,26 +3,26 @@
 
     <div id="filters">
         <label for="search">Sök:</label>
-        <input type="text">
+        <input type="text" [(ngModel)]="searchInput" (ngModelChange)="searchCourses()">
         <select name="subject" id="subject">
             <option value="">Välj ämne</option>
-            
+
         </select>
         <h3>Sortera efter:</h3>
         <div>
             <span>Kursnamn:</span>
-            <button>A-Ö</button>
-            <button>Ö-A</button>
+            <button (click)="nameAscending()">A-Ö</button>
+            <button (click)="nameDescending()">Ö-A</button>
         </div>
         <div>
             <span>Kurskod:</span>
-            <button>A-Ö</button>
-            <button>Ö-A</button>
+            <button (click)="codeAscending()">A-Ö</button>
+            <button (click)="codeDescending()">Ö-A</button>
         </div>
         <div>
             <span>Antal poäng:</span>
-            <button>Lägst-Högst</button>
-            <button>Högst-Lägst</button>
+            <button (click)="pointsAscending()">Lägst-Högst</button>
+            <button (click)="pointsDescending()">Högst-Lägst</button>
         </div>
     </div>
 

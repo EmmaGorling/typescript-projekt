@@ -15,7 +15,8 @@ export class CoursesComponent {
   //Arrays for storing the data
   courseList: Course[] = [];
   orgCourseList: Course[] = [];
-
+  // Property for searchInput
+  searchInput: string = '';
   // Create a instance of courseservice
   constructor(private courseservice: CourseService) {}
 
@@ -36,6 +37,45 @@ export class CoursesComponent {
         }
       });
     });
+  }
+
+  // Search for courses
+  searchCourses() {
+    // If serachInput is not an empty string
+    if(this.searchInput.trim() !== '') {
+      // Make input and possible searches lowercase and look for match
+      this.courseList = this.orgCourseList.filter( course => 
+        course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
+    }
+  }
+
+  // Filter coursename in ascending order
+  nameAscending() {
+    this.courseList.sort((a, b) => a.courseName.localeCompare(b.courseName));
+  }
+
+  // Filter coursename in descending order
+  nameDescending() {
+    this.courseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
+  }
+
+  // Filter coursecode in ascending order
+  codeAscending() {
+    this.courseList.sort((a, b) => (a.courseCode > b.courseCode) ? 1 : -1);
+  }
+
+  // Filter coursecode in descending order
+  codeDescending() {
+    this.courseList.sort((a, b) => (b.courseCode > a.courseCode) ? 1 : -1);
+  }
+
+  // Filter coursepoints in ascending order
+  pointsAscending() {
+    this.courseList = this.courseList.sort(function(a, b){return a.points - b.points});
+  }
+  // Filter courspoints in descending order
+  pointsDescending() {
+    this.courseList = this.courseList.sort(function(a, b){return b.points - a.points});
   }
 }
 
