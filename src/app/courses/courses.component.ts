@@ -49,7 +49,11 @@ export class CoursesComponent {
   }
   // Pick a subject from select
   chooseSubject() {
-    console.log(this.selectValue)
+    // If subject is "unchoosen", show the original courselist
+    if(this.selectValue === '') {
+      this.courseList = this.orgCourseList;
+    }
+    // Pick out the courses that includes selelcted value
     this.courseList = this.courseList.filter(course => course.subject.includes(this.selectValue));
   }
 
@@ -58,8 +62,10 @@ export class CoursesComponent {
     // If serachInput is not an empty string
     if(this.searchInput.trim() !== '') {
       // Make input and possible searches lowercase and look for match
-      this.courseList = this.orgCourseList.filter( course => 
+      this.courseList = this.courseList.filter( course => 
         course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
+    } else {
+      this.courseList = this.orgCourseList;
     }
   }
 
