@@ -21,9 +21,21 @@ export class CoursesComponent {
 
   ngOnInit() {
     this.courseservice.getCourses().subscribe(data => {
+      
       this.courseList = data;
       this.orgCourseList = data;
-    })
+
+      // Change the level to comprehencable data
+      this.courseList.forEach(course => {
+        switch(course.level) {
+          case 'GR':
+            course.level = 'Grundläggande';
+            break;
+          case 'AV':
+            course.level = 'Avancerad';
+        }
+      });
+    });
   }
 }
 
