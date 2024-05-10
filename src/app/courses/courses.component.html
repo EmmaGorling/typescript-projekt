@@ -1,6 +1,31 @@
 <main>
     <h2>Vårt utbud av kurser</h2>
 
+    <div id="filters">
+        <label for="search">Sök:</label>
+        <input type="text">
+        <select name="subject" id="subject">
+            <option value="">Välj ämne</option>
+            
+        </select>
+        <h3>Sortera efter:</h3>
+        <div>
+            <span>Kursnamn:</span>
+            <button>A-Ö</button>
+            <button>Ö-A</button>
+        </div>
+        <div>
+            <span>Kurskod:</span>
+            <button>A-Ö</button>
+            <button>Ö-A</button>
+        </div>
+        <div>
+            <span>Antal poäng:</span>
+            <button>Lägst-Högst</button>
+            <button>Högst-Lägst</button>
+        </div>
+    </div>
+
     @if (courseList.length === 0) {
         <p>Vi kunde inte hitta några kurser..</p>
     }
