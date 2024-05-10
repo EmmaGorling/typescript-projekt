@@ -2,24 +2,29 @@
     <h2>Vårt utbud av kurser</h2>
 
     <div id="filters">
+        <!-- Searchfield -->
         <label for="search">Sök:</label>
         <input type="text" [(ngModel)]="searchInput" (ngModelChange)="searchCourses()">
-        <select name="subject" id="subject">
+        <!-- Filter by subject -->
+        <select name="subject" id="subject" [(ngModel)]="selectValue" (ngModelChange)="chooseSubject()">
             <option value="">Välj ämne</option>
-
+            <option *ngFor="let subject of subjects" [ngValue]="subject"> {{ subject }}</option>
         </select>
         <h3>Sortera efter:</h3>
         <div>
+            <!-- Sort by courseName -->
             <span>Kursnamn:</span>
             <button (click)="nameAscending()">A-Ö</button>
             <button (click)="nameDescending()">Ö-A</button>
         </div>
         <div>
+            <!-- Sort by courseCode -->
             <span>Kurskod:</span>
             <button (click)="codeAscending()">A-Ö</button>
             <button (click)="codeDescending()">Ö-A</button>
         </div>
         <div>
+            <!-- Sort by points -->
             <span>Antal poäng:</span>
             <button (click)="pointsAscending()">Lägst-Högst</button>
             <button (click)="pointsDescending()">Högst-Lägst</button>

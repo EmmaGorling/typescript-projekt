@@ -15,8 +15,12 @@ export class CoursesComponent {
   //Arrays for storing the data
   courseList: Course[] = [];
   orgCourseList: Course[] = [];
+  // Array for storing the subjects
+  subjects: string[] = [];
   // Property for searchInput
   searchInput: string = '';
+  // Prpoerty for selectvalue
+  selectValue: string = '';
   // Create a instance of courseservice
   constructor(private courseservice: CourseService) {}
 
@@ -36,7 +40,17 @@ export class CoursesComponent {
             course.level = 'Avancerad';
         }
       });
+
+      // Take out subjects, remove the duplicates and rearrange in ascending order
+      this.subjects = this.courseList.map(course => {
+        return course.subject;
+      }).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a.localeCompare(b));
     });
+  }
+  // Pick a subject from select
+  chooseSubject() {
+    console.log(this.selectValue)
+    this.courseList = this.courseList.filter(course => course.subject.includes(this.selectValue));
   }
 
   // Search for courses
@@ -77,5 +91,7 @@ export class CoursesComponent {
   pointsDescending() {
     this.courseList = this.courseList.sort(function(a, b){return b.points - a.points});
   }
+
+  
 }
 
