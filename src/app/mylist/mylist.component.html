@@ -1,1 +1,19 @@
-<p>mylist works!</p>
+<main>
+    <h2>Mitt ramschema</h2>
+
+    @if (myCourses.length === 0) {
+        <p>Vi kunde inte hitta några kurser i ditt ramschema..</p>
+    }
+
+    <ul *ngFor="let course of myCourses">
+        <li>
+            <span> {{ course.courseCode }} - {{ course.level }} - {{course.points}} HP </span>
+            <a href="{{ course.syllabus }}"> <h3>{{ course.courseName }}, {{ course.subject }}</h3></a>
+            <button (click)="deleteCourse(course)">Ta bort</button>
+        </li>
+    </ul>
+    <div>
+        <p>Antal kurser: {{ myCourses.length }}</p>
+        <p>Totalt antal poäng: {{ points }}</p>
+    </div>
+</main>
