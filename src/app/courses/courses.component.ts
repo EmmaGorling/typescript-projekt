@@ -15,6 +15,8 @@ export class CoursesComponent {
   //Arrays for storing the data
   courseList: Course[] = [];
   orgCourseList: Course[] = [];
+  // Array for storing courses in localstorage
+  myCourses: Course[] = [];
   // Array for storing the subjects
   subjects: string[] = [];
   // Property for searchInput
@@ -65,8 +67,6 @@ export class CoursesComponent {
       this.courseList = this.courseList.filter( course => 
         course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || 
         course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
-    } else {
-      this.courseList = this.orgCourseList;
     }
   }
 
@@ -97,6 +97,11 @@ export class CoursesComponent {
   // Filter courspoints in descending order
   pointsDescending() {
     this.courseList = this.courseList.sort(function(a, b){return b.points - a.points});
+  }
+  // Add course to local storage
+  addCourse(course: Course) {
+    this.myCourses.push(course);
+    localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
   }
 }
 

@@ -39,7 +39,7 @@
         <li>
             <span> {{ course.courseCode }} - {{ course.level }} - {{course.points}} HP </span>
             <a href="{{ course.syllabus }}"> <h3>{{ course.courseName }}, {{ course.subject }}</h3></a>
-            <button>Lägg till</button>
+            <button (click)="addCourse(course)">Lägg till</button>
         </li>
     </ul>
 </main>
