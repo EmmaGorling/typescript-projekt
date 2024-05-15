@@ -15,6 +15,7 @@ export class CoursesComponent {
   //Arrays for storing the data
   courseList: Course[] = [];
   orgCourseList: Course[] = [];
+  resetCourseList: Course[] = [];
   // Array for storing courses in localstorage
   myCourses: Course[] = [];
   // Array for storing the subjects
@@ -31,6 +32,7 @@ export class CoursesComponent {
       
       this.courseList = data;
       this.orgCourseList = data;
+      this.resetCourseList = data;
 
       // Change the level to comprehencable data
       this.courseList.forEach(course => {
@@ -53,10 +55,12 @@ export class CoursesComponent {
   chooseSubject() {
     // If subject is "unchoosen", show the original courselist
     if(this.selectValue === '') {
-      this.courseList = this.orgCourseList;
+      this.orgCourseList = this.resetCourseList;
+      this.courseList = this.resetCourseList;
     }
-    // Pick out the courses that includes selelcted value
-    this.courseList = this.courseList.filter(course => course.subject.includes(this.selectValue));
+    // Pick out the courses that includes selected value
+    this.orgCourseList = this.courseList.filter(course => course.subject.includes(this.selectValue));
+    this.courseList = this.orgCourseList;
   }
 
   // Search for courses
@@ -64,7 +68,7 @@ export class CoursesComponent {
     // If serachInput is not an empty string
     if(this.searchInput.trim() !== '') {
       // Make input and possible searches lowercase and look for match
-      this.courseList = this.courseList.filter( course => 
+      this.courseList = this.orgCourseList.filter( course => 
         course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || 
         course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
     }
@@ -72,31 +76,31 @@ export class CoursesComponent {
 
   // Filter coursename in ascending order
   nameAscending() {
-    this.courseList.sort((a, b) => a.courseName.localeCompare(b.courseName));
+    this.courseList = this.orgCourseList.sort((a, b) => a.courseName.localeCompare(b.courseName));
   }
 
   // Filter coursename in descending order
   nameDescending() {
-    this.courseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
+    this.courseList = this.orgCourseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
   }
 
   // Filter coursecode in ascending order
   codeAscending() {
-    this.courseList.sort((a, b) => (a.courseCode > b.courseCode) ? 1 : -1);
+    this.courseList = this.orgCourseList.sort((a, b) => (a.courseCode > b.courseCode) ? 1 : -1);
   }
 
   // Filter coursecode in descending order
   codeDescending() {
-    this.courseList.sort((a, b) => (b.courseCode > a.courseCode) ? 1 : -1);
+    this.courseList = this.orgCourseList.sort((a, b) => (b.courseCode > a.courseCode) ? 1 : -1);
   }
 
   // Filter coursepoints in ascending order
   pointsAscending() {
-    this.courseList = this.courseList.sort(function(a, b){return a.points - b.points});
+    this.courseList = this.orgCourseList.sort(function(a, b){return a.points - b.points});
   }
   // Filter courspoints in descending order
   pointsDescending() {
-    this.courseList = this.courseList.sort(function(a, b){return b.points - a.points});
+    this.courseList = this.orgCourseList.sort(function(a, b){return b.points - a.points});
   }
   // Add course to local storage
   addCourse(course: Course) {
