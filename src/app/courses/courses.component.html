@@ -10,33 +10,17 @@
             <option value="">Välj ämne</option>
             <option *ngFor="let subject of subjects" [ngValue]="subject"> {{ subject }}</option>
         </select>
-        <h3>Sortera efter:</h3>
+        <label for="sorting">Sortera efter:</label>
         <select name="sorting" id="sorting" [(ngModel)]="chosenSort" (ngModelChange)="sort()">
             <option value="codeAsc">A-Ö, Kurskod</option>
             <option value="codeDesc">Ö-A, Kurskod</option>
             <option value="nameAsc">A-Ö, Kursnamn</option>
             <option value="nameDesc">Ö-A, Kursnamn</option>
+            <option value="subjectAsc">A-Ö, Ämne</option>
+            <option value="subjectDesc">Ö-A, Ämne</option>
             <option value="pointsAsc">Lägst-Högst, HP</option>
             <option value="pointsDesc">Högst-Lägst, HP</option>
         </select>
-        <div>
-            <!-- Sort by courseName -->
-            <span>Kursnamn:</span>
-            <button (click)="nameAscending()">A-Ö</button>
-            <button (click)="nameDescending()">Ö-A</button>
-        </div>
-        <div>
-            <!-- Sort by courseCode -->
-            <span>Kurskod:</span>
-            <button (click)="codeAscending()">A-Ö</button>
-            <button (click)="codeDescending()">Ö-A</button>
-        </div>
-        <div>
-            <!-- Sort by points -->
-            <span>Antal poäng:</span>
-            <button (click)="pointsAscending()">Lägst-Högst</button>
-            <button (click)="pointsDescending()">Högst-Lägst</button>
-        </div>
     </div>
 
     @if (courseList.length === 0) {

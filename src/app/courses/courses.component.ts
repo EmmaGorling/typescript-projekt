@@ -60,7 +60,7 @@ export class CoursesComponent {
       this.courseList = this.resetCourseList;
     }
     // Pick out the courses that includes selected value
-    this.orgCourseList = this.courseList.filter(course => course.subject.includes(this.selectValue));
+    this.orgCourseList = this.resetCourseList.filter(course => course.subject.includes(this.selectValue));
     this.courseList = this.orgCourseList;
   }
 
@@ -75,40 +75,11 @@ export class CoursesComponent {
     }
   }
 
-  // Filter coursename in ascending order
-  nameAscending() {
-    this.courseList = this.orgCourseList.sort((a, b) => a.courseName.localeCompare(b.courseName));
-  }
-
-  // Filter coursename in descending order
-  nameDescending() {
-    this.courseList = this.orgCourseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
-  }
-
-  // Filter coursecode in ascending order
-  codeAscending() {
-    this.courseList = this.orgCourseList.sort((a, b) => (a.courseCode > b.courseCode) ? 1 : -1);
-  }
-
-  // Filter coursecode in descending order
-  codeDescending() {
-    this.courseList = this.orgCourseList.sort((a, b) => (b.courseCode > a.courseCode) ? 1 : -1);
-  }
-
-  // Filter coursepoints in ascending order
-  pointsAscending() {
-    this.courseList = this.orgCourseList.sort(function(a, b){return a.points - b.points});
-  }
-  // Filter courspoints in descending order
-  pointsDescending() {
-    this.courseList = this.orgCourseList.sort(function(a, b){return b.points - a.points});
-  }
   // Add course to local storage
   addCourse(course: Course) {
     this.myCourses.push(course);
     localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
   }
-
 
   // Filter by select
   sort() {
@@ -127,6 +98,14 @@ export class CoursesComponent {
       }
       case 'nameDesc': {
         this.courseList = this.orgCourseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
+        break;
+      }
+      case 'subjectAsc': {
+        this.courseList = this.orgCourseList.sort((a, b) => a.subject.localeCompare(b.subject));
+        break;
+      }
+      case 'subjectDesc': {
+        this.courseList = this.orgCourseList.sort((a, b) => b.subject.localeCompare(a.subject));
         break;
       }
       case 'pointsAsc': {
