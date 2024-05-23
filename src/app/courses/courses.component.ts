@@ -24,6 +24,7 @@ export class CoursesComponent {
   searchInput: string = '';
   // Prpoerty for selectvalue
   selectValue: string = '';
+  chosenSort: string = '';
   // Create a instance of courseservice
   constructor(private courseservice: CourseService) {}
 
@@ -106,6 +107,37 @@ export class CoursesComponent {
   addCourse(course: Course) {
     this.myCourses.push(course);
     localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
+  }
+
+
+  // Filter by select
+  sort() {
+    switch(this.chosenSort) {
+      case 'codeAsc': {
+        this.courseList = this.orgCourseList.sort((a, b) => (a.courseCode > b.courseCode) ? 1 : -1);
+        break;
+      }
+      case 'codeDesc': {
+        this.courseList = this.orgCourseList.sort((a, b) => (b.courseCode > a.courseCode) ? 1 : -1);
+        break;
+      }
+      case 'nameAsc': {
+        this.courseList = this.orgCourseList.sort((a, b) => a.courseName.localeCompare(b.courseName));
+        break;
+      }
+      case 'nameDesc': {
+        this.courseList = this.orgCourseList.sort((a, b) => b.courseName.localeCompare(a.courseName));
+        break;
+      }
+      case 'pointsAsc': {
+        this.courseList = this.orgCourseList.sort(function(a, b){return a.points - b.points});
+        break;
+      }
+      case 'pointsDesc': {
+        this.courseList = this.orgCourseList.sort(function(a, b){return b.points - a.points});
+        break;
+      }
+    }
   }
 }
 

@@ -11,6 +11,14 @@
             <option *ngFor="let subject of subjects" [ngValue]="subject"> {{ subject }}</option>
         </select>
         <h3>Sortera efter:</h3>
+        <select name="sorting" id="sorting" [(ngModel)]="chosenSort" (ngModelChange)="sort()">
+            <option value="codeAsc">A-Ö, Kurskod</option>
+            <option value="codeDesc">Ö-A, Kurskod</option>
+            <option value="nameAsc">A-Ö, Kursnamn</option>
+            <option value="nameDesc">Ö-A, Kursnamn</option>
+            <option value="pointsAsc">Lägst-Högst, HP</option>
+            <option value="pointsDesc">Högst-Lägst, HP</option>
+        </select>
         <div>
             <!-- Sort by courseName -->
             <span>Kursnamn:</span>
