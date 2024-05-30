@@ -5,8 +5,8 @@
         <p>Vi kunde inte hitta några kurser i ditt ramschema..</p>
     }
 
-    <ul *ngFor="let course of myCourses">
-        <li>
+    <ul>
+        <li *ngFor="let course of myCourses">
             <span> {{ course.courseCode }} - {{ course.level }} - {{course.points}} HP </span>
             <a href="{{ course.syllabus }}"> <h3>{{ course.courseName }}, {{ course.subject }}</h3></a>
             <button (click)="deleteCourse(course)">Ta bort</button>
