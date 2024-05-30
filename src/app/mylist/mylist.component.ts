@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MylistComponent {
 
-  // Array from storing courses from LS
+  // Array for storing courses from LS
   myCourses: Course[] = [];
   // Storing points
   points: number = 0;
@@ -22,7 +22,10 @@ export class MylistComponent {
 
   ngOnInit() {
     // Get mycourses from LS
-    this.myCourses = this.mylistservice.getMyCourses();
+    const storedCourses = this.mylistservice.getMyCourses();
+    if(storedCourses) {
+      this.myCourses = storedCourses;
+    }
     // Reset points
     this.points = 0;
     // Add upp the points from mycourse

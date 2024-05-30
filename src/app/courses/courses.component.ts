@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CourseService } from '../services/course.service';
 import { Course } from '../model/course';
+import { MylistService } from '../services/mylist.service';
 
 @Component({
   selector: 'app-courses',
@@ -16,8 +17,6 @@ export class CoursesComponent {
   courseList: Course[] = [];
   orgCourseList: Course[] = [];
   resetCourseList: Course[] = [];
-  // Array for storing courses in localstorage
-  myCourses: Course[] = [];
   // Array for storing the subjects
   subjects: string[] = [];
   // Property for searchInput
@@ -26,7 +25,7 @@ export class CoursesComponent {
   selectValue: string = '';
   chosenSort: string = '';
   // Create a instance of courseservice
-  constructor(private courseservice: CourseService) {}
+  constructor(private courseservice: CourseService, private myListService: MylistService) {}
 
   ngOnInit() {
     this.courseservice.getCourses().subscribe(data => {
@@ -58,10 +57,11 @@ export class CoursesComponent {
     if(this.selectValue === '') {
       this.orgCourseList = this.resetCourseList;
       this.courseList = this.resetCourseList;
+    } else {
+      // Pick out the courses that includes selected value
+      this.orgCourseList = this.resetCourseList.filter(course => course.subject.includes(this.selectValue));
+      this.courseList = this.orgCourseList;
     }
-    // Pick out the courses that includes selected value
-    this.orgCourseList = this.resetCourseList.filter(course => course.subject.includes(this.selectValue));
-    this.courseList = this.orgCourseList;
   }
 
   // Search for courses
@@ -77,8 +77,7 @@ export class CoursesComponent {
 
   // Add course to local storage
   addCourse(course: Course) {
-    this.myCourses.push(course);
-    localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
+    this.myListService.addCourse(course);
   }
 
   // Filter by select

@@ -5,30 +5,38 @@ import { Course } from '../model/course';
   providedIn: 'root'
 })
 export class MylistService {
+  // Array for storing my courses
+  myCourses: Course[] = [];
 
   constructor() { }
 
   // Get mycourses from local storage
   getMyCourses() {
-    const myCourses = localStorage.getItem('myCourses');
-    if(myCourses) {
-      return JSON.parse(myCourses)
+    const storedCourses = localStorage.getItem('myCourses');
+    if(storedCourses) {
+      this.myCourses = JSON.parse(storedCourses);
+      return this.myCourses;
     }
     return null;
+  }
+
+  addCourse(course:Course) {
+    this.myCourses.push(course);
+    localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
   }
 
   // Delete course from local storage
   deleteCourse(course: Course) {
     // Get courses from local storage or send empty array
-    let myCourses = JSON.parse(localStorage.getItem('myCourses') || '[]' );
+    let storedCourses = JSON.parse(localStorage.getItem('myCourses') || '[]' );
     // Find the index of the course 
-    const index = myCourses.findIndex((c: Course) => c.courseCode === course.courseCode);
+    const index = storedCourses.findIndex((c: Course) => c.courseCode === course.courseCode);
     // Check the index
     if(index !== -1) {
       // Remove from array
-      myCourses.splice(index, 1);
+      this.myCourses.splice(index, 1);
       // Store to localstorage
-      localStorage.setItem('myCourses', JSON.stringify(myCourses));
+      localStorage.setItem('myCourses', JSON.stringify(this.myCourses));
     }
   }
 }
