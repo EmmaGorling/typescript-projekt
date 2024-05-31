@@ -1,0 +1,27 @@
+@import '../../stylings/variables';
+main {
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+ul {
+    list-style: none;
+    li {
+        background-color: white;
+        margin: 10px auto 10px -5ch;
+        padding: 10px;
+    }
+    button {
+        background-color: $dark-purple;
+        border: none;
+        border-radius: 5px;
+        line-height: 1.8em;
+        color: $off-white;
+        font-weight: 600;
+    }
+    a {
+        color: $dark-grey;
+        text-decoration: none;
+    }
+}

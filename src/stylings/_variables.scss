@@ -1,8 +1,9 @@
 $dark-grey: #141414;
-$light-purple: #bb99d2;
-$dark-purple: #9b6cac;
-$off-white: #d9cddb;
+$dark-purple: #732C5D;
+$light-purple: lighten($dark-purple, 55%);
+$off-white: #ede4ef;
 
 // Fonts
 $source-sans: "Source Sans 3", sans-serif;
 $roboto: "Roboto", sans-serif;
+$lora: "Lora", serif;

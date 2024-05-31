@@ -1,6 +1,15 @@
 @import '../../stylings/variables';
 
-
+img {
+    display: block;
+    margin: 10px auto 0px;
+    width: 20%;
+    max-width: 100px;
+}
+h1 {
+    text-align: center;
+    font-family: $lora;
+}
 nav {
     text-align: center;
     margin-left: -4ch;
@@ -22,5 +31,6 @@ li {
     }
     a:hover, .active {
         background-color: $dark-purple;
+        color: $off-white;
     }
 }

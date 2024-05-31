@@ -4,6 +4,12 @@ footer {
     #logo, #contact, #socials {
         width: 70%;
         margin: 10px auto;
+        img {
+            display: block;
+            width: 20%;
+            max-width: 100px;
+            margin: 0px auto;
+        }
 
         ul {
             list-style: none;

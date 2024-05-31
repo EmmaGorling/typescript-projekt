@@ -27,6 +27,8 @@ main {
             width: fit-content;
             margin-top: 10px;
             margin-bottom: 10px;
+            color: $dark-grey;
+            text-decoration: none;
         }
     }
 }
@@ -43,7 +45,7 @@ main {
         padding: 10px 10px 0px;
         border: 1px solid $dark-grey;
         margin-bottom: 10px;
-        background-color: rgba($color: $dark-purple, $alpha: 0.3);
+        background-color: $light-purple;
     }
     img {
         width: 100%;

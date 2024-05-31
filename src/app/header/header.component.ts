@@ -9,7 +9,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  constructor() {
-    document.body.style.backgroundColor = '#bb99d2';
-  }
+  
 }
