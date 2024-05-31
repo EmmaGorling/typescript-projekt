@@ -4,9 +4,9 @@ import { CoursesComponent } from './courses/courses.component';
 import { MylistComponent } from './mylist/mylist.component';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent},
     {path: 'courses', component: CoursesComponent},
     {path: 'mylist', component: MylistComponent},
-    {path: '**', redirectTo: 'home'}
+    {path: '**', redirectTo: ''}
 ];
 

@@ -72,6 +72,8 @@ export class CoursesComponent {
       this.courseList = this.orgCourseList.filter( course => 
         course.courseName.toLowerCase().includes(this.searchInput.toLowerCase()) || 
         course.courseCode.toLowerCase().includes(this.searchInput.toLowerCase()));
+    } else {
+      this.courseList = this.orgCourseList;
     }
   }
 

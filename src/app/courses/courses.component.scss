@@ -1,0 +1,32 @@
+@import '../../stylings/variables';
+main {
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+#filters {
+    line-height: 2em;
+    text-align: center;
+    #subject {
+        width: 12ch;
+        margin-left: 5px;
+    }
+}
+p {
+    color: rgb(107, 106, 106);
+}
+ul {
+    list-style: none;
+    li {
+        background-color: white;
+        margin: 10px auto 10px -5ch;
+        padding: 10px;
+    }
+    button {
+    }
+    a {
+        color: $dark-grey;
+        text-decoration: none;
+    }
+}

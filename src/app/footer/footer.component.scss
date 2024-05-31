@@ -1,0 +1,21 @@
+@import '../../stylings/variables';
+
+footer {
+    #logo, #contact, #socials {
+        width: 70%;
+        margin: 10px auto;
+
+        ul {
+            list-style: none;
+            margin-left: -3ch;
+            font-weight: 500;
+        }
+        a {
+            color: $dark-grey;
+        }
+    }
+    i {
+        display: inline-block;
+        margin-right: 1ch;
+    }
+}

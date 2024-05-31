@@ -1,11 +1,11 @@
 <header>
     <h1>Elystra University</h1>
 
-    <nav>
+    <nav id="mainMenu">
         <ul>
-            <li><a routerLink="/" routerLinkActive="active-link">Startsida</a></li>
-            <li><a routerLink="/courses" routerLinkActive="active-link">Kurslista</a></li>
-            <li><a routerLink="/mylist" routerLinkActive="active-link">Mina kurser</a></li>
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Startsida</a></li>
+            <li><a routerLink="/courses" routerLinkActive="active">Kurslista</a></li>
+            <li><a routerLink="/mylist" routerLinkActive="active">Mina kurser</a></li>
         </ul>
     </nav>
 </header>

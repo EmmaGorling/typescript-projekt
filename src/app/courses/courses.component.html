@@ -10,6 +10,7 @@
             <option value="">Välj ämne</option>
             <option *ngFor="let subject of subjects" [ngValue]="subject"> {{ subject }}</option>
         </select>
+        <br>
         <label for="sorting">Sortera efter:</label>
         <select name="sorting" id="sorting" [(ngModel)]="chosenSort" (ngModelChange)="sort()">
             <option value="codeAsc">A-Ö, Kurskod</option>
@@ -27,6 +28,7 @@
         <p>Vi kunde inte hitta några kurser..</p>
     }
 
+    <p>Visar {{courseList.length}} av {{resetCourseList.length}} kurser.</p>
     <ul>
         <li *ngFor="let course of courseList">
             <span> {{ course.courseCode }} - {{ course.level }} - {{course.points}} HP </span>

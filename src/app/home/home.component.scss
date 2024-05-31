@@ -1,0 +1,58 @@
+@import '../../stylings/variables';
+main {
+    padding-bottom: 20px;
+}
+#bg-image {
+    background-image: url('../../assets/images/stairs.jpg');
+    background-size: cover;
+    background-position: center;
+    height: fit-content;
+    padding: 50px 0;
+    #slogan-container {
+        background-color: rgba($color: $dark-grey, $alpha: 0.9);
+        width: fit-content;
+    }
+    #slogan {
+        padding: 10px 20px;
+        font-size: 2em;
+        color: white;
+        font-family: $source-sans;
+        font-weight: 800;
+        a {
+            display: block;
+            font-size: 0.5em;
+            background-color: $light-purple;
+            padding: 5px 10px;
+            text-align: center;
+            width: fit-content;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}
+#info {
+    h2 {
+        text-align: center;
+    }
+    a {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        text-decoration: none;
+        color: $dark-grey;
+        padding: 10px 10px 0px;
+        border: 1px solid $dark-grey;
+        margin-bottom: 10px;
+        background-color: rgba($color: $dark-purple, $alpha: 0.3);
+    }
+    img {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 800px) {
+    #bg-image {
+        padding: 50px 0px 70px 50px;
+    }
+}
