@@ -85,8 +85,6 @@ export class CoursesComponent {
     const index = this.selectedCourses.indexOf(course);
     if (index === -1) {
       this.selectedCourses.push(course);
-    } else {
-      this.selectedCourses.splice(index, 1);
     }
   }
   // Check if selected
