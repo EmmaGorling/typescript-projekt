@@ -40,12 +40,11 @@ main {
         display: block;
         width: 90%;
         max-width: 500px;
-        margin: 0 auto;
+        margin: 0 auto 10px;
         text-decoration: none;
         color: $dark-grey;
         padding: 10px 10px 0px;
         border: 1px solid $dark-grey;
-        margin-bottom: 10px;
         background-color: $light-purple;
     }
     img {

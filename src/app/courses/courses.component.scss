@@ -16,7 +16,7 @@ h2 {
     }
 }
 p {
-    color: rgb(107, 106, 106);
+    color: lighten($dark-grey, 20%);
 }
 ul {
     list-style: none;
