@@ -38,3 +38,9 @@ ul {
         text-decoration: none;
     }
 }
+ul {
+    .clicked {
+        background-color: $light-purple;
+        color: $dark-grey;
+    }
+}

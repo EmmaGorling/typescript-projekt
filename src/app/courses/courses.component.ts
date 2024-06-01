@@ -24,6 +24,8 @@ export class CoursesComponent {
   // Prpoerty for selectvalue
   selectValue: string = '';
   chosenSort: string = '';
+  // Storing selected courses
+  selectedCourses:Course[] = [];
   // Create a instance of courseservice
   constructor(private courseservice: CourseService, private myListService: MylistService) {}
 
@@ -80,6 +82,16 @@ export class CoursesComponent {
   // Add course to local storage
   addCourse(course: Course) {
     this.myListService.addCourse(course);
+    const index = this.selectedCourses.indexOf(course);
+    if (index === -1) {
+      this.selectedCourses.push(course);
+    } else {
+      this.selectedCourses.splice(index, 1);
+    }
+  }
+  // Check if selected
+  selected(course: Course):boolean {
+    return this.selectedCourses.includes(course);
   }
 
   // Filter by select
