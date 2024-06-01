@@ -25,3 +25,13 @@ footer {
         margin-right: 1ch;
     }
 }
+
+@media (min-width: 700px) {
+    footer {
+        display: grid;
+        grid-template-columns: 20% 40% 40%;
+        #logo img {
+            width: 60%;
+        }
+    }
+}
